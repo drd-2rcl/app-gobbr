@@ -1,3 +1,7 @@
+# Auth
+
+APP_SECRET=
+
 # Database
 
 DB_HOST=
