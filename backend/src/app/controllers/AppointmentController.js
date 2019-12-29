@@ -88,20 +88,21 @@ class AppointmentController {
       date,
     });
 
-    return res.json(appointment);
+    // Notify appointment provider
+    const user = await User.findByPk(req.userId);
 
-    // // Notify appointment provider
-    // const user = await User.findByPk(req.userId);
-    // const formattedDate = format(
-    //   hourStart,
-    //   "'dia' dd 'de' MMMM', às' H:mm'h'",
-    //   { locale: pt }
-    // );
-    // await Notification.create({
-    //   content: `Novo agendamento de ${user.name} para o ${formattedDate}`,
-    //   user: provider_id,
-    // });
-    // return res.json(appointment);
+    const formattedDate = format(
+      hourStart,
+      "'dia' dd 'de' MMMM', às' H:mm'h'",
+      { locale: pt }
+    );
+
+    await Notification.create({
+      content: `Novo agendamento de ${user.name} para o ${formattedDate}`,
+      user: provider_id,
+    });
+
+    return res.json(appointment);
   }
 }
 
