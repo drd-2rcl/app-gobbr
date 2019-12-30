@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import { startOfHour, parseISO, isBefore, format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
+import Sequelize from 'sequelize';
 import User from '../models/User';
 import File from '../models/File';
 import Appointment from '../models/Appointment';
@@ -46,18 +47,14 @@ class AppointmentController {
       return res.status(400).json({ error: 'Validation fails' });
     }
 
-    const { provider_id, date, user_id } = req.body;
+    const { provider_id, date } = req.body;
 
-    // Check if a provider_id is not yourself
-    // const checkisNotYourself = await User.findOne({
-    //   where: { id: provider_id === user_id },
-    // });
-
-    // if (checkisNotYourself) {
-    //   return res
-    //     .status(401)
-    //     .json({ error: 'You can not create appointments to yourself' });
-    // }
+    // // Check if a provider_id is not create appointment for yourself
+    if (provider_id === req.userId) {
+      return res
+        .status(401)
+        .json({ error: 'You can not create appointments to yourself' });
+    }
 
     // Check if a provider_id is a provider
     const checkIsProvider = await User.findOne({
