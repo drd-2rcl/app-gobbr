@@ -46,10 +46,20 @@ class AppointmentController {
       return res.status(400).json({ error: 'Validation fails' });
     }
 
-    const { provider_id, date } = req.body;
+    const { provider_id, date, user_id } = req.body;
+
+    // Check if a provider_id is not yourself
+    // const checkisNotYourself = await User.findOne({
+    //   where: { id: provider_id === user_id },
+    // });
+
+    // if (checkisNotYourself) {
+    //   return res
+    //     .status(401)
+    //     .json({ error: 'You can not create appointments to yourself' });
+    // }
 
     // Check if a provider_id is a provider
-
     const checkIsProvider = await User.findOne({
       where: { id: provider_id, provider: true },
     });
