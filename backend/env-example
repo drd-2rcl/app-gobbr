@@ -13,3 +13,10 @@ DB_NAME=
 # Mongo
 
 MONGO_URL=
+
+# Mail
+
+MAIL_HOST=
+MAIL_PORT=
+MAIL_USER=
+MAIL_PASS=
