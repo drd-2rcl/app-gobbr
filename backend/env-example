@@ -1,3 +1,6 @@
+APP_URL=
+NODE_ENV=
+
 # Auth
 
 APP_SECRET=
@@ -25,3 +28,7 @@ MAIL_PASS=
 
 REDIS_HOST=
 REDIS_PORT=
+
+# Sentry
+
+SENTRY_DSN=
