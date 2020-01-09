@@ -32,3 +32,6 @@ REDIS_PORT=
 # Sentry
 
 SENTRY_DSN=
+
+# Cors
+CORS_DEV=
