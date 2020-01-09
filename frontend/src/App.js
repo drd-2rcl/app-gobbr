@@ -1,9 +1,7 @@
-import React from 'react';
+import React from "react";
 
 function App() {
-  return (
-    <div>Frontend Gobbr</div>
-  );
+  return <div>Frontend Gobbr</div>;
 }
 
 export default App;
