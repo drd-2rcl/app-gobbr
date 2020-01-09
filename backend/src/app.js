@@ -4,6 +4,8 @@ import path from 'path';
 import './database';
 import routes from './routes';
 
+require('dotenv/config');
+
 class App {
   constructor() {
     this.server = express();
