@@ -24,7 +24,7 @@ class App {
 
   middlewares() {
     this.server.use(Sentry.Handlers.requestHandler());
-    this.server.use(cors({ origin: `https://${process.env.CORS_DEV}` }))
+    this.server.use(cors({ origin: `http://${process.env.CORS_DEV}` }));
     this.server.use(express.json());
     this.server.use(
       '/files',
